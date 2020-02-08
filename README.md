@@ -4,6 +4,11 @@
 
 ## Research
 
+<b>Python:</b>
+
+* [Tutorial](https://www.youtube.com/watch?v=rfscVS0vtbw)
+* [Documentation](https://docs.python.org/3.8/index.html)
+
 <b>Thompson's construction:</b>
 
 * [Wikipedia](https://en.wikipedia.org/wiki/Thompson's_construction)
