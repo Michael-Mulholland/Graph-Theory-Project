@@ -6,6 +6,7 @@
 
 <b>Python:</b>
 
+* [python.org](https://www.python.org/)
 * [Tutorial](https://www.youtube.com/watch?v=rfscVS0vtbw)
 * [Documentation](https://docs.python.org/3.8/index.html)
 
