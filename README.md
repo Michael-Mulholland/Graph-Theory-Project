@@ -20,8 +20,9 @@
 * [Regular Expressions - Computerphile](https://www.youtube.com/watch?v=528Jc3q86F8)
 
 <b>Data Structues<b>
-* [Sets](https://docs.python.org/3.8/library/stdtypes.html#set-types-set-frozenset)
-
+* [python.org - Sets](https://docs.python.org/3.8/library/stdtypes.html#set-types-set-frozenset)
+* [Real Python - Sets](https://realpython.com/python-sets/)
+  
 ***
 
 <br>
