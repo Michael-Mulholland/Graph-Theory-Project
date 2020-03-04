@@ -3,8 +3,9 @@
 Michael Mulholland - G00362383
 
 ## Introduction
-<p>A program using the Python programming language that can build a NFA from a regular expression. This Project is for Graph Theory and can use the NFA to check if the regular expression matches any given string of text.<p>
-
+<p>A program using the Python programming language that can build a non-deterministic finite automation (NFA) from a regular expression. This program will use the NFA to check if the regular expression matches any given string of text.<p>
+  
+<p>A regular expression is a string containing a series of characters, some of which may have a special meaning. <p>
 
 ## Research
 
