@@ -1,6 +1,9 @@
 # Graph-Theory-Project
 3rd Year Graph Theory Project
 
+## Introduction
+<p>A program using the Python programming language that can build a NFA from a regular expression. This Project is for Graph Theory and can use the NFA to check if the regular expression matches any given string of text.<p>
+
 
 ## Research
 
