@@ -78,7 +78,7 @@ def shunt(infix):
     return ''.join(postfix)
 
 # Takes a regular expression and changes it to a Postfix expression
-def regex_compile(infix):
+def compile(infix):
     postfix = shunt(infix)
 
     # Reverse postfix
@@ -149,18 +149,61 @@ def regex_compile(infix):
     # The NFA stack should have exactly one NFA on it
     return nfa_stack.pop()
 
+# Add a state to a set, and follow all of the e arrows
+def followes(state, current):
+    # Only do something when we haven't already seen the state
+    if state not in current:
+        # Put the state itself into current
+        current.add(state)
+        # See whether state is labelled by e(psilon)
+        if state.label is None:
+            # Loop through the states pointed to by this state
+            for x in state.edges:
+                #Follow all of their e(psilon)s too
+                followes(x, current)
+
 def match(regex, s):
     # This function will return TRUE if the regular expression
     # regex (fully - not doing a partial match yet) matches the string s.
     # It returns FALSE otherwise
 
     # Complie the regular expression into an NFA
-    nfa = regex_compile(regex)
+    nfa = compile(regex)
+
+    # Try to Match the regular expression to the string s
+    # Reference to the set data structure
+        # https://docs.python.org/3.8/library/stdtypes.html#set-types-set-frozenset
+        # https://realpython.com/python-sets/
+
+    # The current set of states
+    current = set()
+
+    # Add the first state and follow all e(psilon) arrows.
+    followes(nfa.start, current) # Passed by reference
+
+    # Loop through characters in s
+    for c in s:
+        # Pointers - previous is pointing to current and then current to pointing to something new(a new empty set)
+        # Keep track of where we were
+        previous = current
+        # Create a new empty set for states we're about to be in
+        current = set()
+
+        # Loop throught the previous states
+        for state in previous:
+            # Only follow arrows not labelled by e(psilon)
+            if state.label is not None:
+                # If the label of the state is equal to the character we've read:
+                if state.label == c:
+                    # Add the state at the end of the arrow to current
+                    followes(state.edges[0], current)
 
     # Does the NFA match the string s
     # return nfa.match(s)
 
     # Ask the NFA if it matches the string s
-    return nfa
+    # If nfa accept state is in the current set of  states, then we accept, otherwise we don't
+    # returns TRUE or FAlSE
+    return nfa.accept in current
 
 print(match("a.d|b*", "bbbbbbbbbbb"))
