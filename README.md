@@ -28,6 +28,8 @@ Michael Mulholland - G00362383
 * [python.org - Sets](https://docs.python.org/3.8/library/stdtypes.html#set-types-set-frozenset)
 * [Real Python - Sets](https://realpython.com/python-sets/)
   
+<b>Guidelines<b>
+* [PEPs](https://www.python.org/dev/peps/)
 ***
 
 <br>
