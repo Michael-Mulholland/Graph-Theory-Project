@@ -1,4 +1,4 @@
-# Michael Mulholland
+# G00362383 - Michael Mulholland
 # Classes used in Thomspon's construction
 
 class State:
@@ -206,4 +206,21 @@ def match(regex, s):
     # returns TRUE or FAlSE
     return nfa.accept in current
 
-print(match("a.d|b*", "bbbbbbbbbbb"))
+# checks if the script has been run as a script by itself
+if__name__ == "__main__":
+    print(match("a.d|b*", "bbbbbbbbbbb"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
