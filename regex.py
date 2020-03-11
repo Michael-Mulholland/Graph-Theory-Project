@@ -206,9 +206,17 @@ def match(regex, s):
     # returns TRUE or FAlSE
     return nfa.accept in current
 
+# when imported - it won't do the below
+# It will if regex.py gets run as a script
 # checks if the script has been run as a script by itself
-if__name__ == "__main__":
+if __name__ == "__main__":
     print(match("a.d|b*", "bbbbbbbbbbb"))
+
+# prints out the name of the python file
+print(__name__)
+
+
+
 
 
 
