@@ -2,34 +2,28 @@
 # Classes used in Thomspon's construction
 
 class State:
-    # Every State has a 0, 1, or 2 edges from it
-    edges = []
-
-    # Label for the arrows. None means epsilon(e)
-    # None is the same as Null
-    label = None
-
-    # Constructor for the class
+    """A state with one or two edges, all edges labeled by label."""
+    # Constructor for the class - it creates two variables (edges and label)
     # self is the same as the keyword 'this' in java
     def __init__(self, label=None, edges=[]):
+        # Every State has a 0, 1, or 2 edges from it
         self.edges = edges
+        # Label for the arrows. None means epsilon(e)
         self.label = label
 
 # NFA Fragment
 # Fragment - an NFA in its own right
 class Fragment:
-    # Start state of NFA fragment
-    start = None
-
-    # Accept state of NFA fragment
-    accept = None
-
+    """An NFA fragment with a start state and an accept state."""
     # Constructor
     def __init__(self, start, accept):
+        # Start state of NFA fragment
         self.start = start
+        # Accept state of NFA fragment
         self.accept = accept
 
 def shunt(infix):
+    """Return the infix regular expression in postfix."""
     # Convert input to a stack list
     infix = list(infix)[::-1]
 
@@ -60,7 +54,7 @@ def shunt(infix):
             opers.pop()
 
         elif c in prec:
-            # Push any operators on the opers stack with higher prec to the output
+            #Push any opers on the opers stack with higher prec to the output
             while opers and prec[c] < prec[opers[-1]]:
                 postfix.append(opers.pop())
             # Push c to the operator stack
@@ -79,11 +73,14 @@ def shunt(infix):
 
 # Takes a regular expression and changes it to a Postfix expression
 def compile(infix):
+    """Returns an NFA Fragment representing the infix regular expression"""
+    # Convert infix to postfix
     postfix = shunt(infix)
 
     # Reverse postfix
     postfix = list(postfix)[::-1]
 
+    # A stack for NFA fragments
     nfa_stack = []
 
     # Loop through postfix while it's not empty
@@ -98,10 +95,11 @@ def compile(infix):
 
             # Point frag2's accept state at frag1's start state
             frag2.accept.edges.append(frag1.start)
-
-            # Create a new instance of Frag to represent the new NFA
-            # newfrag - joins two NFA's into one NFA
-            newfrag = Fragment(frag2.start, frag1.accept)
+            
+            # The new start state is frag2's
+            start = frag2.start
+            # The new accept state is frag1's
+            accept = frag1.accept
 
         elif c == '|':
             # Pop twp fragments of the stack
@@ -116,9 +114,6 @@ def compile(infix):
             frag2.accept.edges.append(accept)
             frag1.accept.edges.append(accept)
 
-            # Create a new instance of Fragment to represent the new NFA
-            newfrag = Fragment(start, accept)
-
         elif c == '*':
             # Pop a single fragment off the stack
             frag = nfa_stack.pop()
@@ -130,18 +125,16 @@ def compile(infix):
             # Point the arrows
             frag.accept.edges = [frag.start, accept]
 
-            # Create new instance of Fragment to represent the new NFA
-            newfrag = Fragment(start, accept)
-
         else:
             # New instance of the State class
             accept = State()
 
-            # initial fragment for a single(normal) character read from the postfix regular expression
+            # initial frag for a single char read from the postfix reg ex
             start = State(label=c, edges=[accept])
 
-            # Create new instance of Fragment to represent the new NFA
-            newfrag = Fragment(start, accept)
+        # Create a new instance of Frag to represent the new NFA
+        # newfrag - joins two NFA's into one NFA
+        newfrag = Fragment(start, accept)
 
         # Push the new NFA to the NFA stack
         nfa_stack.append(newfrag)
@@ -151,6 +144,7 @@ def compile(infix):
 
 # Add a state to a set, and follow all of the e arrows
 def followes(state, current):
+    """"""
     # Only do something when we haven't already seen the state
     if state not in current:
         # Put the state itself into current
@@ -163,6 +157,7 @@ def followes(state, current):
                 followes(x, current)
 
 def match(regex, s):
+    """"""
     # This function will return TRUE if the regular expression
     # regex (fully - not doing a partial match yet) matches the string s.
     # It returns FALSE otherwise
@@ -170,10 +165,10 @@ def match(regex, s):
     # Complie the regular expression into an NFA
     nfa = compile(regex)
 
-    # Try to Match the regular expression to the string s
-    # Reference to the set data structure
-        # https://docs.python.org/3.8/library/stdtypes.html#set-types-set-frozenset
-        # https://realpython.com/python-sets/
+    #Try to Match the regular expression to the string s
+    #Reference to the set data structure
+    #https://docs.python.org/3.8/library/stdtypes.html#set-types-set-frozenset
+    #https://realpython.com/python-sets/
 
     # The current set of states
     current = set()
@@ -183,7 +178,8 @@ def match(regex, s):
 
     # Loop through characters in s
     for c in s:
-        # Pointers - previous is pointing to current and then current to pointing to something new(a new empty set)
+        # Pointers - prev is pointing to current and 
+        # then current to pointing to something new(a new empty set)
         # Keep track of where we were
         previous = current
         # Create a new empty set for states we're about to be in
@@ -193,7 +189,7 @@ def match(regex, s):
         for state in previous:
             # Only follow arrows not labelled by e(psilon)
             if state.label is not None:
-                # If the label of the state is equal to the character we've read:
+                # If the label of the state is equal to the char we've read:
                 if state.label == c:
                     # Add the state at the end of the arrow to current
                     followes(state.edges[0], current)
@@ -202,13 +198,29 @@ def match(regex, s):
     # return nfa.match(s)
 
     # Ask the NFA if it matches the string s
-    # If nfa accept state is in the current set of  states, then we accept, otherwise we don't
-    # returns TRUE or FAlSE
+    # If nfa accept state is in the current set of  states, then we accept, 
+    # otherwise we don't, returns TRUE or FAlSE
     return nfa.accept in current
 
 # checks if the script has been run as a script by itself
 if__name__ == "__main__":
-    print(match("a.d|b*", "bbbbbbbbbbb"))
+
+    # Array of tests
+    tests = [
+        ["a.b|b*", "bbbbbb", True],
+        ["a.b|b*", "bbx", False],
+        ["a.b", "ab", True],
+        ["b**", "b", True],
+        ["b*", "", True]        
+    ]
+    
+    # loop through the tests
+    for test in tests:
+        assert match(test[0], test[1]) == test[2], test[0] + \ 
+        (" should match " if test[2] else "should not match ") + test[1]
+
+    #assert match("a.d|b*", "bbbbbb"), "a.b|b* should match bbbbbb"
+    #assert not match("a.d|b*", "bbbbbbbbbbbx"), "a.b|b* should not match bbbbbbbbbbbx"
 
 
 
