@@ -1,6 +1,9 @@
+# Graph Theory 3rd Year project 2020
 # G00362383 - Michael Mulholland
-# Classes used in Thomspon's construction
+# This program converts infix to postfix
+# It builds NFA's from regular expressions
 
+# A state with two arrows
 class State:
     """A state with one or two edges, all edges labeled by label."""
     # Constructor for the class - it creates two variables (edges and label)
@@ -34,7 +37,7 @@ def shunt(infix):
     postfix = []
 
     # Operator Precedence
-    prec = {'*':100, '.':80, '|':60, ')':40, '(':20}
+    prec = {'*':70, '.':40, '|':30, ')':20, '(':10}
 
     # Loop through the input one character at a time
     while infix:
@@ -73,7 +76,7 @@ def shunt(infix):
 
 # Takes a regular expression and changes it to a Postfix expression
 def compile(infix):
-    """Returns an NFA Fragment representing the infix regular expression"""
+    """ Returns an NFA Fragment representing the infix regular expression """
     # Convert infix to postfix
     postfix = shunt(infix)
 
@@ -142,9 +145,8 @@ def compile(infix):
     # The NFA stack should have exactly one NFA on it
     return nfa_stack.pop()
 
-# Add a state to a set, and follow all of the e arrows
 def followes(state, current):
-    """"""
+    """ Add a state to a set, and follow all of the e arrows """
     # Only do something when we haven't already seen the state
     if state not in current:
         # Put the state itself into current
@@ -157,10 +159,9 @@ def followes(state, current):
                 followes(x, current)
 
 def match(regex, s):
-    """"""
-    # This function will return TRUE if the regular expression
-    # regex (fully - not doing a partial match yet) matches the string s.
-    # It returns FALSE otherwise
+    """ This function will return TRUE if the regular expression
+        regex matches the string s.
+        It returns FALSE otherwise """
 
     # Complie the regular expression into an NFA
     nfa = compile(regex)
@@ -203,7 +204,7 @@ def match(regex, s):
     return nfa.accept in current
 
 # checks if the script has been run as a script by itself
-if__name__ == "__main__":
+if __name__ == "__main__":
 
     # Array of tests
     tests = [
@@ -216,23 +217,7 @@ if__name__ == "__main__":
     
     # loop through the tests
     for test in tests:
-        assert match(test[0], test[1]) == test[2], test[0] + \ 
-        (" should match " if test[2] else "should not match ") + test[1]
+        assert match(test[0], test[1], test[2], test[3]
 
     #assert match("a.d|b*", "bbbbbb"), "a.b|b* should match bbbbbb"
     #assert not match("a.d|b*", "bbbbbbbbbbbx"), "a.b|b* should not match bbbbbbbbbbbx"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
