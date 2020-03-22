@@ -3,6 +3,8 @@
 # This program converts infix to postfix
 # It builds NFA's from regular expressions
 
+import sys
+
 # A state with two arrows
 class State:
     """A state with one or two edges, all edges labeled by label."""
@@ -36,8 +38,10 @@ def shunt(infix):
     # Output List
     postfix = []
 
+    # Regular expressions special characters
+    # http://www.fon.hum.uva.nl/praat/manual/Regular_expressions_1__Special_characters.html
     # Operator Precedence
-    prec = {'*':70, '.':40, '|':30, ')':20, '(':10}
+    prec = {'*':70, '+':60, '?':50, '.':40, '|':30, ')':20, '(':10}
 
     # Loop through the input one character at a time
     while infix:
@@ -116,6 +120,13 @@ def compile(infix):
             # Point the old accept states at the new accept state
             frag2.accept.edges.append(accept)
             frag1.accept.edges.append(accept)
+        
+        elif c == '?':
+            frag = nfa_stack.pop()
+
+            accept = State()
+            start = State(edges=[frag.start, accept])
+            frag.accept.edges = [accept, accept]
 
         elif c == '*':
             # Pop a single fragment off the stack
@@ -127,6 +138,7 @@ def compile(infix):
 
             # Point the arrows
             frag.accept.edges = [frag.start, accept]
+
 
         else:
             # New instance of the State class
@@ -170,7 +182,6 @@ def match(regex, s):
     #Reference to the set data structure
     #https://docs.python.org/3.8/library/stdtypes.html#set-types-set-frozenset
     #https://realpython.com/python-sets/
-
     # The current set of states
     current = set()
 
@@ -203,21 +214,28 @@ def match(regex, s):
     # otherwise we don't, returns TRUE or FAlSE
     return nfa.accept in current
 
+# If you run the runner.py file, the below tests will not be executed.
+# If you run the regex.py file, the below tests will be excuted.
 # checks if the script has been run as a script by itself
 if __name__ == "__main__":
 
     # Array of tests
     tests = [
         ["a.b|b*", "bbbbbb", True],
-        ["a.b|b*", "bbx", False],
+        #["a.b|b*", "bbx", False],
         ["a.b", "ab", True],
-        ["b**", "b", True],
-        ["b*", "", True]        
+        ["b**", "baaa", True],
+        ["b*", "", True],
+		["c?", "qq", True],
+		["c?", "c", True],
+		["c?", "cc", False],
+		["c?|a", "a", True],
+		["c?|a", "c", True],
+		["c?|b*", "bb", True],
+		["c?|b", "bbbbbb", False],
+		["c|b", "bbbbbb", False],
     ]
-    
+
     # loop through the tests
     for test in tests:
-        assert match(test[0], test[1], test[2], test[3]
-
-    #assert match("a.d|b*", "bbbbbb"), "a.b|b* should match bbbbbb"
-    #assert not match("a.d|b*", "bbbbbbbbbbbx"), "a.b|b* should not match bbbbbbbbbbbx"
+        assert match(test[0], test[1]) == test[2], test[0] + (" should match " if test[2] else "should not match ") + test[1] 
