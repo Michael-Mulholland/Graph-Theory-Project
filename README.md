@@ -1,5 +1,6 @@
 # Graph Theory Project 2020
-3rd Year Graph Theory Project
+<hr>
+<p>3rd Year Graph Theory Project</P>
 Michael Mulholland - G00362383
 
 ## Introduction
@@ -7,33 +8,30 @@ Michael Mulholland - G00362383
   
 <p>A regular expression is a string containing a series of characters, some of which may have a special meaning. <p>
 
-<hr>
-
 ## Submission Contents
 
-runner.py
-https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files
-I have imported the match function from regex.py into the runner.py
+<p><b>runner.py<b><p>
 
-The code is run within a while True loop. This is to allow the user to run as many tests as they like without having to restart the program every time (there is an option to quit the program).
+<p>I have imported the match function from regex.py into the runner.py<p>
+
+<p>The code is run within a while True loop. This is to allow the user to run as many tests as they like without having to restart the program every time (there is an option to quit the program).<p>
 
 When the program runs the user will be prompted to select one of the following options:
+* Enter 1: to test your own regular expression and String.
+* Enter 2: to run pre-written tests.
+* Enter 3: to quit the program.
 
-Enter 1: to test your own regular expression and String.
-Enter 2: to run pre-written tests.
-Enter 3: to quit the program.
+<p>If option one is selected, the user will be asked to enter a regular expression of their choice. Then the user will have to enter a string. <p>
 
-If option one is selected, the user will be asked to enter a regular expression of their choice. Then the user will have to enter a string. 
+<p>If option two is selected, pre-written tests will automatically run. I am using two arrays. One for the regular expressions and one for the strings. I've used a nested for loop to compare each index of the regex array with every index of the strings array to see if they match.<p>
 
-If option two is selected, pre-written tests will automatically run. I am using two arrays. One for the regular expressions and one for the strings. I've used a nested for loop to compare each index of the regex array with every index of the strings array to see if they match
+<p>If option three is selected, the program will exit.<p>
 
-If option three is selected, the program will exit.
+<p>If the user selects option 1 or option 2, the program will then call the match function and use the NFA to check if the regular expression matches any given string of text. If it does match, True will be returned. If it doesn't match, False will be returned.<p>
 
-If the user selects option 1 or option 2, the program will then call the match function and use the NFA to check if the regular expression matches any given string of text. If it does match, True will be returned. If it doesn't match, False will be returned.
 
-==========================================================================
 
-regex.py
+<p><b>regex.py<b><p>
 --------------------------------------------------------------------------
 
 Class State
