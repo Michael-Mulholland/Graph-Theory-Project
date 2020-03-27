@@ -10,7 +10,7 @@ Michael Mulholland - G00362383
 
 ## Submission Contents
 
-<p><b>runner.py<b><p>
+**runner.py**
 
 <p>I have imported the match function from regex.py into the runner.py<p>
 
@@ -31,8 +31,7 @@ When the program runs the user will be prompted to select one of the following o
 
 
 
-<p><b>regex.py<b><p>
---------------------------------------------------------------------------
+**regex.py**
 
 Class State
 A state with one or two edges, all edges labeled by label.
