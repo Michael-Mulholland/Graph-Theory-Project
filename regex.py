@@ -205,7 +205,7 @@ def match(regex, s):
         regex matches the string s.
         It returns FALSE otherwise """
 
-    # Complie the regular expression into an NFA
+    # Compile the regular expression into an NFA
     nfa = compile(regex)
 
     #Try to Match the regular expression to the string s
@@ -244,6 +244,7 @@ def match(regex, s):
     # otherwise we don't, returns TRUE or FAlSE
     return nfa.accept in current
 
+# TESTS
 # If you run the runner.py file, the below tests will not be executed.
 # If you run the regex.py file, the below tests will be excuted.
 # checks if the script has been run as a script by itself
@@ -263,7 +264,7 @@ if __name__ == "__main__":
 		["c?|a", "c", True],
 		["c?|b*", "bb", True],
 		["c?|b", "bbbbbb", False],
-		["c|b", "bbbbbb", False]
+		["c|b", "bbbbbb", False],
     ]
 
     # loop through the tests

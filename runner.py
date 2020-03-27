@@ -15,7 +15,7 @@ def main():
         print("Enter 1: to test your own regular expression and String.")
         print("Enter 2: to test pre-written tests.")
         print("Enter 3: to quit the program.")
-        choice = input("Please select one: ")   
+        choice = input("Please select one of the above: ")   
         
         #If yes then ask for the following input and match it
         if choice == '1':
@@ -36,9 +36,9 @@ def main():
               
         elif choice == '2':
             # Array of regular expressions
-            regex = ["b.c", "a.b|b*", "a|c.b*", "c*.b"]
+            regex = ["b.c", "a.b|b*", "a|c.b*", "c*.b", "a+b", "a+b.c", "b?"]
             # Array of strings 
-            stringsArr = ["bcccc", "bbb", "abc", "ccccccb", "abbc", "abbbbb", "abccd"]
+            stringsArr = ["bcccc", "bbb", "abc", "bc", "ccccccb", "abbc", "abbbbb", "abccd", "a", "b", ""]
             
             # Nested for loop to compare each index of the regex array with 
             # every index of the strings array to see if they match
