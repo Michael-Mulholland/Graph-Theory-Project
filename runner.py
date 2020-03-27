@@ -27,22 +27,12 @@ def main():
 
             # get the String from user input
             s = input("Enter string: ")
+            print()
 
-            # Returns true if all characters in the string are alphabetic 
-            # and there is at least one character, false otherwise.
-            # https://docs.python.org/2/library/stdtypes.html#str.isalpha
-            # I permalinked the method in the above URL. If you scroll down
-            # around 1\4 of the page, you will see the method in yellow
-            #if s.isalpha():
-                #print()
-                # The match() function will return TRUE 
-                # if the regular expression regex matches the string.
-                # It returns FALSE otherwise
-                #print(match(regex, s), regex, s)
+            # The match() function will return TRUE 
+            # if the regular expression regex matches the string.
+            # It returns FALSE otherwise
             print("Regex: " + regex, " String: " + s, " Match: ", match(regex, s))
-            #else:
-             #   print()
-              #  print('A string was not entered.')
               
         elif choice == '2':
             # Array of regular expressions

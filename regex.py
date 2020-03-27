@@ -10,9 +10,9 @@ class State:
     """A state with one or two edges, all edges labeled by label."""
     # Constructor for the class - it creates two variables (edges and label)
     # self is the same as the keyword 'this' in java
-    def __init__(self, label=None, edges=[]):
+    def __init__(self, label=None, edges=None):
         # Every State has a 0, 1, or 2 edges from it
-        self.edges = edges
+        self.edges = edges if edges else []
         # Label for the arrows. None means epsilon(e)
         self.label = label
 
@@ -68,7 +68,7 @@ def shunt(infix):
             opers.append(c)
 
         else:
-            # Puch the character to the output
+            # Push all other character to the output
             postfix.append(c)
 
     # Pop all operators to the output
@@ -96,49 +96,79 @@ def compile(infix):
         c = postfix.pop()
 
         if c == '.':
-            # Pop two fragments off the stack
+            # AND
+            # Pop two fragments off the stack. (frag1 and frag2)
             frag1 = nfa_stack.pop()
             frag2 = nfa_stack.pop()
 
             # Point frag2's accept state at frag1's start state
             frag2.accept.edges.append(frag1.start)
             
-            # The new start state is frag2's
+            # The new start state is frag2's start state
             start = frag2.start
-            # The new accept state is frag1's
+            # The new accept state is frag1's accept state
             accept = frag1.accept
 
         elif c == '|':
-            # Pop twp fragments of the stack
+            # OR
+            # Pop two fragments of the stack.(frag1 and frag2)
             frag1 = nfa_stack.pop()
             frag2 = nfa_stack.pop()
 
-            # Create a new start and accept state 
+            # Create a new accept state 
             accept = State()
+
+            # Create a new start state 
+            # The new start state is pointing to frag2's start state and frag1's start state
             start = State(edges=[frag2.start, frag1.start])
 
-            # Point the old accept states at the new accept state
+            # Point frag2's and frag1's old accept states at the new accept state
             frag2.accept.edges.append(accept)
             frag1.accept.edges.append(accept)
         
-        elif c == '?':
-            frag = nfa_stack.pop()
-
-            accept = State()
-            start = State(edges=[frag.start, accept])
-            frag.accept.edges = [accept, accept]
-
         elif c == '*':
-            # Pop a single fragment off the stack
+            # Zero or More
+            # Pop a single fragment off the stack. (frag)
             frag = nfa_stack.pop()
 
-            # Create a new start and accept states
+            # Create a new accept state 
             accept = State()
+
+            # Create a new start state 
+            # The new start state is pointing to the frag's start state and the new accept state
             start = State(edges=[frag.start, accept])
 
-            # Point the arrows
+            # The frag's old accept state is then connect to the old frag's start state and the new accept state.
             frag.accept.edges = [frag.start, accept]
 
+        elif c == '?':
+            # Pop a single fragment off the stack. (frag)
+            frag = nfa_stack.pop()
+
+            # Create a new accept state 
+            accept = State()
+
+            # Create a new start state 
+            # The new start state is pointing to the old frag's start state and the new accept state
+            start = State(edges=[frag.start, accept])
+
+            # The old frag's accept state is then connect to the new accept state (only)
+            # It doen't connect to the new start state at all.
+            frag.accept.edges = [accept, accept]
+
+        elif c == '+':
+            # Pop a single fragment off the stack. (frag1)
+            frag = nfa_stack.pop()
+
+            # Create a new accept state 
+            accept = State()
+
+            # Create a new start state 
+            # The start state is connented to the old frag's start state
+            start = frag.start
+
+            # The frag's old accept state is then connect to the new start state and the new accept state.          
+            frag.accept.edges = [start, accept]
 
         else:
             # New instance of the State class
@@ -222,7 +252,7 @@ if __name__ == "__main__":
     # Array of tests
     tests = [
         ["a.b|b*", "bbbbbb", True],
-        #["a.b|b*", "bbx", False],
+        ["a.b|b*", "bbx", False],
         ["a.b", "ab", True],
         ["b**", "baaa", True],
         ["b*", "", True],
@@ -233,7 +263,7 @@ if __name__ == "__main__":
 		["c?|a", "c", True],
 		["c?|b*", "bb", True],
 		["c?|b", "bbbbbb", False],
-		["c|b", "bbbbbb", False],
+		["c|b", "bbbbbb", False]
     ]
 
     # loop through the tests
