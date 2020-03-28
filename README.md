@@ -68,7 +68,6 @@ When the program runs the user will be prompted to select one of the following o
 	* Point frag2's accept state at frag1's start state
 	* The new start state is frag2's start state
 	* The new accept state is frag1's accept state
-	https://github.com/G00362383/Graph-Theory-Project/blob/master/images/a.b.JPG
 
 * if the character is a '|':
 	* OR
