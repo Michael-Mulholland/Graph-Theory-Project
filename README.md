@@ -1,16 +1,16 @@
-# Graph Theory Project 2020
+# **Graph Theory Project 2020**
 <hr>
 <p>3rd Year Graph Theory Project</P>
 Michael Mulholland - G00362383
 
-## Introduction
+## **Introduction**
 <p>A program using the Python programming language that can build a non-deterministic finite automation (NFA) from a regular expression. This program will use the NFA to check if the regular expression matches any given string of text.<p>
   
 <p>A regular expression is a string containing a series of characters, some of which may have a special meaning. <p>
 
-## Submission Contents
+## **Submission Contents**
 
-**runner.py**
+## runner.py
 
 <p>I have imported the match function from regex.py into the runner.py<p>
 
@@ -29,19 +29,17 @@ When the program runs the user will be prompted to select one of the following o
 
 <p>If the user selects option 1 or option 2, the program will then call the match function and use the NFA to check if the regular expression matches any given string of text. If it does match, True will be returned. If it doesn't match, False will be returned.<p>
 
+## regex.py
 
-
-**regex.py**
-
-Class State
+**Class State**
 A state with one or two edges, all edges labeled by label.
 The State class contains a constructor that creates two variables, edges and labels. Every State has 0, 1, or 2 edges from it and a label for the arrows (None).
 
-Class Fragment
+**Class Fragment**
 An NFA fragment with a start state and an accept state.
 The Fragment class contains a constructor that creates a start state of the NFA fragmant and the accept state of the NFA fragmant.
 
-Shunt Function
+**Shunt Function**
 The Shunt function reads in a string(infix regular expression) and return the infix regular expression in postfix. It loops through the input one character at a time and decides what to do based on the character.
 
 if c == '(':
@@ -60,70 +58,63 @@ After the if/elif statement, a while loop, loops through the opers stack and pop
 
 The shunt function then returns the converted output list to string
 
-====
+**Complie Function**
+* It takes the posfix regular expression created in the Shunt Function and turns it into an NFA.
+* The posfix regular expression is reversed and looped through.
+* A character will be popped from the postfix,
 
-Complie Function
-It takes the posfix regular expression created in the Shunt Function and turns it into an NFA.
+* if the character is a '.':
+      - Concatenation 
+      - Two fragments are popped off the stack. (frag1 and frag2)
+      - Point frag2's accept state at frag1's start state
+      - The new start state is frag2's start state
+      - The new accept state is frag1's accept state
 
-The posfix regular expression is reversed and looped through.
+* if the character is a '|':
+      - OR
+      - Pop two fragments of the stack. (frag1 and frag2)
+      - Creates a new start and accept state - the new start state is connected to both frag1 and frag2's start state
+      - Point frag1's and frag2's old accept states at the new accept state
 
-A character will be popped from the postfix,
+* if the character is a '*':
+      - Zero or More
+      - Pop a single fragment off the stack. (frag)
+      - Create a new start and accept states - but point the start state to to the old start state and the new accept state
+      - The old accept state is then connect to the old start state and the new accept state.	
 
-if the character is a '.':
-	Concatenation 
-	Two fragments are popped off the stack. (frag1 and frag2)
-	Point frag2's accept state at frag1's start state
-	The new start state is frag2's start state
-	The new accept state is frag1's accept state
+* if the character is a '?':
+      - Zero or one
+      - Pop a single fragment off the stack. (frag)
+      - Create a new start and accept state - but point the new start state to to the old start state and the new accept state
+      - The old accept state is then connect to the new accept state (only) - It doen't connect to the new start state at all.
 
-if the character is a '|':
-	OR
-        Pop two fragments of the stack. (frag1 and frag2)
-	Creates a new start and accept state - the new start state is connected to both frag1 and frag2's start state
-	Point frag1's and frag2's old accept states at the new accept state
+* if the character is a '+':
+      - One or many
+      - Pop a single fragment off the stack. (frag)
+      - Creates a new start and accept state - the start state is connented to the old frag's start state
+      - The old accept state is then connect to the old start state and the new accept state.
 
-if the character is a '*':
-	Zero or More
-        Pop a single fragment off the stack. (frag)
-	Create a new start and accept states - but point the start state to to the old start state and the new accept state
-	The old accept state is then connect to the old start state and the new accept state.	
-
-if the character is a '?':
-	Zero or one
-        Pop a single fragment off the stack. (frag)
-	Create a new start and accept state - but point the new start state to to the old start state and the new accept state
-	The old accept state is then connect to the new accept state (only) - It doen't connect to the new start state at all.
-
-if the character is a '+':
-	One or many
-	Pop a single fragment off the stack. (frag)
-	Creates a new start and accept state - the start state is connented to the old frag's start state
-	The old accept state is then connect to the old start state and the new accept state.
-
-The else statement is for all characters that are not special. A new accept and start state is created and nothing is popped off the stack.
-The label is set to the character that is been read and the edges is connented to the new accept state.
-
-A new instance of Frag is created to represent the new NFA and joins two NFA's into one NFA.
+* The else statement is for all characters that are not special. A new accept and start state is created and nothing is popped off the stack.
+* The label is set to the character that is been read and the edges is connented to the new accept state.
+* A new instance of Frag is created to represent the new NFA and joins two NFA's into one NFA.
 It then returns exactly one NFA
 
-====
-
-Followes Function
+**Followes Function**
 It's a recursive function that adds a state to a set, and follows all of the e(psilon) arrows but only if we haven't already seen the state.
 
-Match Function
+**Match Function**
 The compile function is called and it compiles the regular expression into an NFA.
 The followes function is then called and adds the first state and follows all e(psilon) arrows.
 The for loop, loops through the string (s). If the label is equal to the character, then add the state arrow to the current set of states.
 This function will return TRUE if the regular expression regex matches the string s, otherwise it returns FALSE.
 
-Tests
+**Tests**
 A few hard coded test to see if my program works.
 If you run the runner.py file, the tests within regex.py will not be executed.
 If you run the regex.py file, the tests will be excuted.
 The for loop, loops through all teh tests and out puts any errors.
 
-VIM
+**VIM**
 Vim is a highly configurable text editor for efficiently creating and changing any kind of text. It is included as "vi" with most UNIX systems and with Apple OS X.
 
 Vim is rock stable and is continuously being developed to become even better. Among its features are:
