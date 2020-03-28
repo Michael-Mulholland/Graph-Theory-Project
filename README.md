@@ -69,11 +69,21 @@ When the program runs the user will be prompted to select one of the following o
 	* The new start state is frag2's start state
 	* The new accept state is frag1's accept state
 
+**a.b**
+<p align="center">
+	<img src="images/a.b.JPG">	
+</p>
+
 * if the character is a '|':
 	* OR
 	* Pop two fragments of the stack. (frag1 and frag2)
 	* Creates a new start and accept state - the new start state is connected to both frag1 and frag2's start state
 	* Point frag1's and frag2's old accept states at the new accept state
+
+**a|b**
+<p align="center">
+	<img src="images/a_OR_b.JPG">	
+</p>
 
 * if the character is a '*':
 	* Zero or More
@@ -81,17 +91,32 @@ When the program runs the user will be prompted to select one of the following o
 	* Create a new start and accept states - but point the start state to to the old start state and the new accept state
 	* The old accept state is then connect to the old start state and the new accept state.	
 
+**a***
+<p align="center">
+	<img src="images/a_kleane..JPG">	
+</p>
+
 * if the character is a '?':
 	* Zero or one
 	* Pop a single fragment off the stack. (frag)
 	* Create a new start and accept state - but point the new start state to to the old start state and the new accept state
 	* The old accept state is then connect to the new accept state (only) - It doen't connect to the new start state at all.
 
+**a?**
+<p align="center">
+	<img src="images/zero_or_one..JPG">	
+</p>
+
 * if the character is a '+':
 	* One or many
 	* Pop a single fragment off the stack. (frag)
 	* Creates a new start and accept state - the start state is connented to the old frag's start state
 	* The old accept state is then connect to the old start state and the new accept state.
+
+**a+**
+<p align="center">
+	<img src="images/one_or_many.JPG">	
+</p>
 
 * The else statement is for all characters that are not special. A new accept and start state is created and nothing is popped off the stack.
 * The label is set to the character that is been read and the edges is connented to the new accept state.
@@ -123,6 +148,9 @@ It then returns exactly one NFA
 	* integrates with many tools
 
 <p>Insert, quiting, saving and copying (with some research) are easy enough but sometimes I struggled with vim. I was creating files that I didn't want to create and I don't know how I was creating them. After some research I found out that I was creating swap files. I just deleted them everytime I made one by accident until I found out that they can actually be useful. They store changes you've made to the buffer. If Vim or your computer crashes, they allow you to recover those changes. They also provide a way to avoid multiple instances of Vim from editing the same file. This can be useful on multi-user systems or just to know if you have another Vim already editing a file. Now, after using vim for this project I find that I am capable of using vim without any problems and it's good to have in the locker. <p>
+	
+## **Examples**
+
 
 ## **Research**
 
@@ -156,3 +184,4 @@ It then returns exactly one NFA
 * [Vim 101: A Beginners Guide](https://www.linux.com/training-tutorials/vim-101-beginners-guide-vim/)
 * [Swap Files on StackExchange](https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files)
 ***
+<p>I have made 40 commits on this project. I just want to point out that around 12 of them are commits on updating the README. The reason I have 12 commits on the README is because I forgot about the preview button. So every change I made, i was commiting it. I'm just informing you in case you were thinking that I done it to get a higher number of commits.</p>
