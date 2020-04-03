@@ -149,9 +149,6 @@ It then returns exactly one NFA
 
 <p>Insert, quiting, saving and copying (with some research) are easy enough but sometimes I struggled with vim. I was creating files that I didn't want to create and I don't know how I was creating them. After some research I found out that I was creating swap files. I just deleted them everytime I made one by accident until I found out that they can actually be useful. They store changes you've made to the buffer. If Vim or your computer crashes, they allow you to recover those changes. They also provide a way to avoid multiple instances of Vim from editing the same file. This can be useful on multi-user systems or just to know if you have another Vim already editing a file. Now, after using vim for this project I find that I am capable of using vim without any problems and it's good to have in the locker. <p>
 	
-## **Examples**
-
-
 ## **Research**
 
 <p>I have alot of research. Maybe too much but I just wanted to list everything that I found useful when trying to complete this project.<p>
