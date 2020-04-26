@@ -38,7 +38,8 @@ def main():
             # Array of regular expressions
             regex = ["b.c", "a.b|b*", "a|c.b*", "c*.b", "a+b", "a+b.c", "b?"]
             # Array of strings 
-            stringsArr = ["bcccc", "bbb", "abc", "bc", "ccccccb", "abbc", "abbbbb", "abccd", "a", "b", ""]
+            stringsArr = ["bcccc", "bbb", "abc", "bc", "ccccccb", 
+                "abbc", "abbbbb", "abccd", "a", "b", ""]
             
             # Nested for loop to compare each index of the regex array with 
             # every index of the strings array to see if they match

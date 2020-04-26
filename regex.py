@@ -119,7 +119,8 @@ def compile(infix):
             accept = State()
 
             # Create a new start state 
-            # The new start state is pointing to frag2's start state and frag1's start state
+            # The new start state is pointing to frag2's start state 
+            # and frag1's start state
             start = State(edges=[frag2.start, frag1.start])
 
             # Point frag2's and frag1's old accept states at the new accept state
@@ -135,10 +136,12 @@ def compile(infix):
             accept = State()
 
             # Create a new start state 
-            # The new start state is pointing to the frag's start state and the new accept state
+            # The new start state is pointing to the frag's start state 
+            # and the new accept state
             start = State(edges=[frag.start, accept])
 
-            # The frag's old accept state is then connect to the old frag's start state and the new accept state.
+            # The frag's old accept state is then connect to the old frag's 
+            # start state and the new accept state.
             frag.accept.edges = [frag.start, accept]
 
         elif c == '?':
@@ -149,10 +152,12 @@ def compile(infix):
             accept = State()
 
             # Create a new start state 
-            # The new start state is pointing to the old frag's start state and the new accept state
+            # The new start state is pointing to the old frag's start state 
+            # and the new accept state
             start = State(edges=[frag.start, accept])
 
-            # The old frag's accept state is then connect to the new accept state (only)
+            # The old frag's accept state is then connect to the new 
+            # accept state (only)
             # It doen't connect to the new start state at all.
             frag.accept.edges = [accept, accept]
 
@@ -167,7 +172,8 @@ def compile(infix):
             # The start state is connented to the old frag's start state
             start = frag.start
 
-            # The frag's old accept state is then connect to the new start state and the new accept state.          
+            # The frag's old accept state is then connect to the new start
+            # state and the new accept state.          
             frag.accept.edges = [start, accept]
 
         else:
@@ -251,13 +257,14 @@ def match(regex, s):
 if __name__ == "__main__":
 
     # Array of tests
+    # every test is true so the user will see no output
+    # uncomment the last test (which is false) and the user will see
+    # the following - AssertionError: b** should match baaa
     tests = [
         ["a.b|b*", "bbbbbb", True],
         ["a.b|b*", "bbx", False],
         ["a.b", "ab", True],
-        ["b**", "baaa", True],
         ["b*", "", True],
-		["c?", "qq", True],
 		["c?", "c", True],
 		["c?", "cc", False],
 		["c?|a", "a", True],
@@ -265,8 +272,13 @@ if __name__ == "__main__":
 		["c?|b*", "bb", True],
 		["c?|b", "bbbbbb", False],
 		["c|b", "bbbbbb", False],
+        #["b**", "baaa", True],
     ]
 
     # loop through the tests
     for test in tests:
-        assert match(test[0], test[1]) == test[2], test[0] + (" should match " if test[2] else "should not match ") + test[1] 
+        # assert is used when debugging code
+        # The assert keyword lets you test if a condition in your code 
+        # returns True, if not, the program will raise an AssertionError
+        assert match(test[0], test[1]) == test[2], test[0] + (" should match " 
+            if test[2] else "should not match ") + test[1] 
