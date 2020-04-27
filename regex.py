@@ -124,8 +124,8 @@ def compile(infix):
             start = State(edges=[frag2.start, frag1.start])
 
             # Point frag2's and frag1's old accept states at the new accept state
-            frag2.accept.edges.append(accept)
-            frag1.accept.edges.append(accept)
+            frag2.accept.edges = [accept]
+            frag1.accept.edges = [accept]
         
         elif c == '*':
             # Zero or More

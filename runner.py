@@ -7,6 +7,12 @@
 # import the match method from the regex.py file
 from regex import match
 
+# import unittest - it is a unit testing framework
+import unittest
+
+# import the test_program.py file
+import test_program
+
 def main():
     while True:
         # user to select one of three options
@@ -35,11 +41,13 @@ def main():
             print("Regex: " + regex, " String: " + s, " Match: ", match(regex, s))
               
         elif choice == '2':
+            # Print out of the tests and expected result - just so the user can see something
+            
             # Array of regular expressions
             regex = ["b.c", "a.b|b*", "a|c.b*", "c*.b", "a+b", "a+b.c", "b?"]
             # Array of strings 
             stringsArr = ["bcccc", "bbb", "abc", "bc", "ccccccb", 
-                "abbc", "abbbbb", "abccd", "a", "b", ""]
+                 "abccd", "a", ""]
             
             # Nested for loop to compare each index of the regex array with 
             # every index of the strings array to see if they match
@@ -47,7 +55,17 @@ def main():
                 print()
                 for s in stringsArr:
                     print("Regex: " + reg, " String: " + s, " Match: ", match(reg, s))
-                    
+           
+            print()
+            # the above tests will allow the user to see the tests and expected result
+            # the below test will only return OK if all tests pass or FAILED if one test fails
+            # The below runs unittest from the test_progam.py
+            # https://stackoverflow.com/questions/31559473/run-unittests-from-a-different-file
+            print("unittest from the test_program.py file")
+            print()
+            suite = unittest.TestLoader().loadTestsFromModule(test_program)
+            unittest.TextTestRunner(verbosity=2).run(suite)    
+
         else:
             print()
             # quiting the program
