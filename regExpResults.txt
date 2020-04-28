@@ -1,0 +1,4 @@
+Regex: q String: q Match: True
+Regex: q String: w Match: False
+Regex: q String: q Match: True
+Regex: aaa String: aaa Match: False

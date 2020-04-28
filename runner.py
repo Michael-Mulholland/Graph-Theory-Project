@@ -17,6 +17,9 @@ import test_program
 import argparse
 
 def main():
+
+    # writing to a file
+    f = open("regExpResults.txt", "a")
    
     parser = argparse.ArgumentParser(
         description = "A program using the Python programming language that\
@@ -56,6 +59,21 @@ def main():
             # if the regular expression regex matches the string.
             # It returns FALSE otherwise
             print("Regex: " + regex, " String: " + s, " Match: ", match(regex, s))
+
+            strRegex = "Regex: "
+            inputRegex = regex
+            strString = " String: "
+            inputString = s
+            strMatch = " Match: "
+            boolResult = match(regex, s)
+            newLine = "\n"
+
+            # concat all the variable to allow writing to file
+            strConcat = strRegex + inputRegex + strString + inputString\
+                    + strMatch + str(boolResult) + newLine
+
+            # write the users input to a file
+            f.write(strConcat)
            
         elif choice == '2':
             # Print out of the tests and expected result - just so the user can see something
@@ -97,5 +115,7 @@ def main():
             # quiting the program
             print("The program has now finished.")
             exit()
+
+    f.close()
 
 main()
