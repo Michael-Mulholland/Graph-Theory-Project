@@ -2,3 +2,16 @@ Regex: q String: q Match: True
 Regex: q String: w Match: False
 Regex: q String: q Match: True
 Regex: aaa String: aaa Match: False
+Regex: a.b String:  Match: False
+Regex: a.b String: " " Match: False
+Regex: a? String:  Match: True
+Regex: a? String: " " Match: False
+Regex: a String: s Match: False
+Regex: a String: a Match: True
+Regex: e String: t Match: False
+Regex: a String: a Match: True
+Regex: ddddd String: ddddd Match: False
+Regex: a.b String: ab Match: True
+Regex: a String: a Match: True
+Regex: w String: w Match: True
+Regex: a.a String: a Match: False

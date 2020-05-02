@@ -29,11 +29,13 @@ def main():
     )
 
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("-v", "--verbose", help="On option 2 only - pre-written tests", action="store_true")
-    group.add_argument("-q", "--quite", help="On option 2 only - pre-written tests", action="store_true")
+    group.add_argument("-v", "--verbose", help="Option 2 only - Displays\
+            results of pre-written tests in more detail", action="store_true")
+    group.add_argument("-q", "--quite", help="Option 2 only - Displays results\
+            of pre-written tests in less detail", action="store_true")
 
     args = parser.parse_args()
-    
+
     while True:
         # user to select one of three options
         print()
@@ -90,7 +92,7 @@ def main():
                 for reg in regex:
                     print()
                     for s in stringsArr:
-                        print("Regex: " + reg, " String: " + s, " Match: ", match(reg, s))
+                        print("The regular expression is: " + reg, " the String is: " + s, " Match: ", match(reg, s))
 
             elif args.quite:
                 # Nested for loop to compare each index of the regex array with 
@@ -98,7 +100,8 @@ def main():
                 for reg in regex:
                     print()
                     for s in stringsArr:
-                        print(reg, ": " + s, " : ", match(reg, s))
+                        print("Regex: " + reg, " String: " + s, " Match: ", match(reg, s))
+
             else: 
                 print()
                 # the above tests will allow the user to see the tests and expected result
@@ -117,5 +120,4 @@ def main():
             exit()
 
     f.close()
-
 main()
