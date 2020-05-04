@@ -3,31 +3,97 @@
 <p>3rd Year Graph Theory Project</P>
 Michael Mulholland - G00362383
 
+<hr>
+<br>
+
 ## **Introduction**
 <p>A program using the Python programming language that can build a non-deterministic finite automation (NFA) from a regular expression. This program will use the NFA to check if the regular expression matches any given string of text.<p>
   
 <p>A regular expression is a string containing a series of characters, some of which may have a special meaning. <p>
+	
+<p>I have made more than 50 commits on this project. I just want to point out that around 20 of them are commits on updating the README. The reason I have around 20 commits on the README is because I forgot about the preview button. So every change I made, i was commiting it. I'm just informing you in case you were thinking that I done it to get a higher number of commits.</p>
+
+<p>Also, please view the overview.md file in the repository. This is pitched at students in the year below me. The document is very long so I have created a Wiki page and split the file up into seperate pages.</p>
+
+<p>Click the below link to navigate to the overview.md Wiki page</p>
+
+* [overview.md Wiki page](https://github.com/G00362383/Graph-Theory-Project/wiki)
+
+<hr>
+<br>
 
 ## **Submission Contents**
 
 ## runner.py
 
-<p>I have imported the match function from regex.py into the runner.py<p>
+* This class is used to start the program. 
+* Once the user executes the runner.py file, the following is imported:
+	* the match function from regex.py
+		* compiles the regular expression into an Non-Deterministic Finite Automation (NFA)
+	* the test_program.py
+		* contains tests to be run on the program to verify that the program works as expected
+	* unittest
+		* unit testing famework
+	* argparse
+		* it’s a command-line parsing module in the Python standard library that allowed me to write a user-friendly command-line.
+		
+* argparse
+	* The argpase is a feature that provides useful information about the program and how to run it correctly. 
+	* In order to view these commands, the user must add on “-h” to the end of there command to execute the program.
 
-<p>The code is run within a while True loop. This is to allow the user to run as many tests as they like without having to restart the program every time (there is an option to quit the program).<p>
+	* For example, if the file is called test.py. The user will type the following:
+		* Python3 test.py -h
 
-When the program runs the user will be prompted to select one of the following options:
-* Enter 1: to test your own regular expression and String.
-* Enter 2: to run pre-written tests.
-* Enter 3: to quit the program.
+	* This will provide useful information about the program and how to run it correctly. 
 
-<p>If option one is selected, the user will be asked to enter a regular expression of their choice. Then the user will have to enter a string. <p>
+	* I have implement the following:
+		* -h (--help)
+			* ovides useful information about the program and how to run it correctly. 
+		* -v (--verbose)
+			* displays the regex, string and result but with more words than necessary
+			* only works for option 2
+		* -q (--quite)
+			* displays the regex, string and result but with less words 
+			* only works for option 2
 
-<p>If option two is selected, pre-written tests will automatically run. I am using two arrays. One for the regular expressions and one for the strings. I've used a nested for loop to compare each index of the regex array with every index of the strings array to see if they match.<p>
+* I have explained in detail how to run the above commands under the heading “Run”.
+The code is run within a while True loop. This is to allow the user to run as many tests as they like without having to restart the program every time (there is an option to quit the program).
+		
+* When the program runs the user will be prompted to select one of the following options:
+	* Option 1: to test your own regular expression and String.
+	* Option 2: to run pre-written tests.
+	* Option 3: to quit the program.
 
-<p>If option three is selected, the program will exit.<p>
+* If the user selects option 1 or option 2, the program will then call the match function and use the NFA to check if the regular expression matches any given string of text. If it does match, True will be returned. If it doesn't match, False will be returned.
 
-<p>If the user selects option 1 or option 2, the program will then call the match function and use the NFA to check if the regular expression matches any given string of text. If it does match, True will be returned. If it doesn't match, False will be returned.<p>
+* Option 1
+	* If option one is selected, the user will be asked to enter the following: 
+		* a regular expression
+		* a string
+
+	* The regular expression and string will be passed into the match() function.  
+Once the user hits enter, the match() function will return “True”, if the regular expression matches the string, otherwise it returns “False”.
+	* When the user hits enter, all the users input will be outputted to a txt file called regExpResults.txt. I am appending to the file. Meaning that the data within the file will never be overwritten. Even if the user exits the program and restarts it.
+
+* Option 2
+	* Option two can run in three different ways and that is down to how the user executed the runner.py file.
+
+	* The three options are as follows:
+		* Python3 runner.py -v
+			* Displays to the screen the regex, string and result of pre-written tests but with more words than necessary
+		* Python3 runner.py -q
+			* displays the regex, string and result but with less words 
+		* Python3 runner.py
+			* this option run all the tests in the test_program.py file using the unittest framework
+
+	* With the following options:
+		* Python3 runner.py -v
+		* Python3 runner.py -q
+
+	* I am using two arrays. One for the regular expressions and one for the strings. I've used a nested for loop to compare each index of the regex array with every index of the strings array to see if they match.
+
+* Option 3
+	* If option three is selected, the program will exit.
 
 ## regex.py
 
@@ -132,11 +198,84 @@ It then returns exactly one NFA
 * The for loop, loops through the string (s). If the label is equal to the character, then add the state arrow to the current set of states.
 * This function will return TRUE if the regular expression regex matches the string s, otherwise it returns FALSE.
 
-**Tests**
-* A few hard coded test to see if my program works.
-* If you run the runner.py file, the tests within regex.py will not be executed.
-* If you run the regex.py file, the tests will be excuted.
-* The for loop, loops through all teh tests and out puts any errors.
+<hr>
+<br>
+
+## **Testing**
+
+There are two ways to test the program. Through one of the following:
+* VIM
+* Command Prompt
+
+<br>
+
+**VIM**
+
+The first is by selecting option 1.
+* The user enters in their own regular expression and string. Once you hit enter on your keyboard, the regular expression and string will be passed into a match() function in the regex.py file. This function will return True if the regular expression regex matches the string s, otherwise it returns False. 
+
+The second is by selection option 2. 
+* (If the user enters either -v or -q argument at the end of the command to run the program)
+This runs pre-written tests. For these tests, I am using two arrays. One for the regular expressions and one for the strings. I've used a nested for loop to compare each index of the regex array with every index of the strings array to see if they match.
+
+(If the user enters no argument at the end of the command to run the program)
+* This runs a series of pre-written tests that I have in a file called test_program.py. The user will not see what tests are been run, they will only see OK if all tests pass or FAIL if they didn’t. I am using the unittest framework to do this. Unittest is a Python language version of JUnit.
+
+<br>
+
+**Command Prompt**
+
+First, install the latest version of python on your computer by going to the following link 
+* https://www.python.org/downloads/
+
+Then do the following:
+* Open Command line: Start menu => Run and type cmd.
+* Navigate to the location of the project folder.
+* Type the following and the hit Enter.
+	* Python runner.py
+
+IMAGE
+ 
+From here, the tests are run exactly as they are under the Heading, Test=>VIM.
+
+
+**Coverage**
+
+I have also installed coverage.py. It is a tool for measuring code coverage within the python program. It monitors your program, noting which parts of the code have been executed, then analyzes the source to identify code that could have been executed but was not. Coverage measurement is typically used to gauge the effectiveness of tests. It can show which parts of your code are being exercised by tests, and which are not.
+
+Installing Coverage
+* If you are using Python 2 >=2.7.9 or Python 3 >=3.4 downloaded from python.org or if you are working in a Virtual Environment created by virtualeny or pyvnv. Just make sure to upgrade pip by going to the following.
+	* https://pip.pypa.io/en/stable/installing/
+
+Using Coverage
+* Enter the following to run all unittest within the folder.
+* Coverage run -m unittest discover
+ 
+IMAGE
+ 
+The above command will scan the folder and if it finds unittest, it’ll run them.
+
+Use the following to view a report on the results:
+* Coverage report -m
+ 
+IMAGE
+ 
+This show that all my code has been test and nothing was missed.
+
+To view a nicer presentation, use the following:
+	* coverage html
+ 
+IMAGE
+ 
+This will create a new folder in your project folder with the results but in a nice presentation.
+
+It will also create a regex.html and test_program.html file display the test coverage in each.
+
+IMAGE
+IMAGE
+
+<hr>
+<br>
 
 **VIM**
 * Vim is a highly configurable text editor for efficiently creating and changing any kind of text. It is included as "vi" with most UNIX systems and with Apple OS X.
@@ -148,37 +287,121 @@ It then returns exactly one NFA
 	* integrates with many tools
 
 <p>Insert, quiting, saving and copying (with some research) are easy enough but sometimes I struggled with vim. I was creating files that I didn't want to create and I don't know how I was creating them. After some research I found out that I was creating swap files. I just deleted them everytime I made one by accident until I found out that they can actually be useful. They store changes you've made to the buffer. If Vim or your computer crashes, they allow you to recover those changes. They also provide a way to avoid multiple instances of Vim from editing the same file. This can be useful on multi-user systems or just to know if you have another Vim already editing a file. Now, after using vim for this project I find that I am capable of using vim without any problems and it's good to have in the locker. <p>
-	
+
+<hr>
+<br>
+
 ## **Research**
 
 <p>I have alot of research. Maybe too much but I just wanted to list everything that I found useful when trying to complete this project.<p>
 
+<br>
+
 <b>Python:</b>
-* [python.org](https://www.python.org/)
-* [Tutorial](https://www.youtube.com/watch?v=rfscVS0vtbw)
+
+Learn Python – Full Course for Beginners (Tutorial) It is a 4 hour 30 minutes video that I used to help me learn more on the language.
+* [YouTube Python Tutorial](https://www.youtube.com/watch?v=rfscVS0vtbw)
+
+The python documentation is the website I would navigate to if I needed to know anything about the language. Such as, installing pip and the Glossary page. Which has everything regarding python.
 * [Documentation](https://docs.python.org/3.8/index.html)
 
+<br>
+
 <b>Thompson's construction:</b>
+
+Wikipedia page. I wanted to try and understand Thompsons’s Construction a bit better
 * [Wikipedia](https://en.wikipedia.org/wiki/Thompson's_construction)
+
+I used the following video to help me for the project and to practice for the summer exam.
 * [Regular Expression to NFA](https://www.youtube.com/watch?v=RYNN-tb9WxI)
 
+<br>
+
 <b>Regular Expression:</b>
+
+I used this site to help me make sure that all my images for this document was correct and I was using it to help me prepare for the exams
 * [Convert regular expressions to NFA's](https://cyberzhg.github.io/toolbox/regex2nfa?regex=YSti)
-* [Regular Expressions - Computerphile](https://www.youtube.com/watch?v=528Jc3q86F8)
+
+I only used part 7.2.1 to help me with the special characters in my project.
 * [Regular Expression Syntax](https://docs.python.org/2/library/re.html#regular-expression-syntax)
+
+Used to help me implement the ? and + special characters.
 * [Regular Expression Help](https://swtch.com/~rsc/regexp/regexp1.html)
+
+Brilliant site. Type in a regular expression and hit enter to see an NFA of the regular expression. Again, I used this site to help me make sure that all my images for this document was correct and I was using it to help me prepare for the exams
 * [Regexper](https://regexper.com/#)
 
+<br>
+
 <b>Data Structues</b>
+
+We used a Set within the project so I just wanted to get to know a bit more about the data structure. So i used the following two links to help me out.
 * [python.org - Sets](https://docs.python.org/3.8/library/stdtypes.html#set-types-set-frozenset)
 * [Real Python - Sets](https://realpython.com/python-sets/)
-  
-<b>Guidelines</b>
-* [PEPs](https://www.python.org/dev/peps/)
+
+<br>
+
+<b>Argparse</b>
+
+I used the following YouTube video to help me implement a command-line options.
+* [Python3 Advanced Tutorial](https://www.youtube.com/watch?v=q94B9n_2nf0)
+
+Very useful link and this is where I got the idea to implement verbose.
+* [Argparse Tutorial](https://docs.python.org/2/howto/argparse.html)
+
+<br>
+
+<b>File Writing</b>
+
+The following tutorial helped me implement outputting the regular expression, string and result that the user entered, to a txt file called regExpResults.txt
+* [Write to a file](https://www.guru99.com/reading-and-writing-files-in-python.html)
+
+Provided me with the answer on how to concatenate a boolean to a string in Python.
+* [Concatenate](https://kite.com/python/answers/how-to-concatenate-a-boolean-to-a-string-in-python)
+
+<br>
+
+<b>PIP</b>
+
+I did not need to install pip as I have the newest version of python. I am providing this link in case the user does not.
+* [Installation](https://pip.pypa.io/en/stable/installing/)
+
+<br>
+
+<b>coverage.py</b>
+
+The link I used to install coverage
+* [Installation](https://coverage.readthedocs.io/en/coverage-5.1/)
+
+<br>
 
 <b>VIM</b>
-* [Vim Wiki](https://en.wikipedia.org/wiki/Vim_(text_editor))
-* [Vim 101: A Beginners Guide](https://www.linux.com/training-tutorials/vim-101-beginners-guide-vim/)
-* [Swap Files on StackExchange](https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files)
+
+I knew nothing about Vim, so I went straight to the Wiki page to see what I can learn about it. It was important that I did because I was going to be using Vim for my project from day one.
+* [Wikipedia Page](https://en.wikipedia.org/wiki/Vim_(text_editor))
+
+It is a cheat sheet for Vim. I used this a good bit at the start but once I got the hang of it, I didn’t need it as much.
+* [Beginner’s Guide to Vim](https://www.linux.com/training-tutorials/vim-101-beginners-guide-vim/)
+
+The first video I watch when I found out that we were going to use Vim. I jumped straight into Vim thinking I would easily know how to use it. I was wrong. I made a lot of mistakes but this video helped me understand it better.
+* [Vim Basics – 8 minute Video](https://www.youtube.com/watch?v=ggSyF1SVFr4)
+
+If no one told you how to copy and paste in Vim, you would never be able to do it. Stackoverflow provided me with the answer.
+* [Copy & paste](https://stackoverflow.com/questions/13447066/vi-vim-editor-copy-a-block-not-usual-action/32716157#32716157)
+
+I was creating files that I didn't want to create and I don't know how I was creating them. After some research I found out that I was creating swap files. This question on StackExchange helped me understand what they are and what’s there purpose.
+* [Swap Files](https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files)
+
+<br>
+
+<b>MISC</b>
+
+__pycache__:
+* [The following help me explain what the folder __pycache__ contains.](https://stackoverflow.com/questions/16869024/what-is-pycache)
+
+<br>
+
+__init__.py
+* [The following help me explain what the folder __init__file is.](https://pythontips.com/2013/07/28/what-is-__init__-py/)
 ***
-<p>I have made 40 commits on this project. I just want to point out that around 12 of them are commits on updating the README. The reason I have 12 commits on the README is because I forgot about the preview button. So every change I made, i was commiting it. I'm just informing you in case you were thinking that I done it to get a higher number of commits.</p>
+
