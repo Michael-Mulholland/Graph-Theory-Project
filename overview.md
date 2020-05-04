@@ -393,9 +393,10 @@ If the character is a '.':
 * The new start state is frag2's start state
 * The new accept state is frag1's accept state
 
-a.b
-
-IMAGE
+**a.b**
+<p align="center">
+	<img src="images/a.b.JPG">	
+</p>
 
 <br>
 
@@ -405,9 +406,10 @@ If the character is a '|':
 * Creates a new start and accept state - the new start state is connected to both frag1 and frag2's start state
 * Point frag1's and frag2's old accept states at the new accept state
 
-a|b
-
-IMAGE
+**a|b**
+<p align="center">
+	<img src="images/a_OR_b.JPG">	
+</p>
 
 <br>
 
@@ -417,9 +419,10 @@ If the character is a '*':
 * Create a new start and accept states - but point the start state to to the old start state and the new accept state
 * The old accept state is then connect to the old start state and the new accept state.
 
-a*
-
-IMAGE
+**a***
+<p align="center">
+	<img src="images/a_kleane..JPG">	
+</p>
 
 <br>
 
@@ -429,9 +432,10 @@ If the character is a '?':
 * Create a new start and accept state - but point the new start state to to the old start state and the new accept state
 * The old accept state is then connect to the new accept state (only) - It doen't connect to the new start state at all.
 
-a?
-
-IMAGE
+**a?**
+<p align="center">
+	<img src="images/zero_or_one..JPG">	
+</p>
 
 <br>
 
@@ -441,9 +445,10 @@ If the character is a '+':
 * Creates a new start and accept state - the start state is connented to the old frag's start state
 * The old accept state is then connect to the old start state and the new accept state.
 
-a+
-   
-IMAGE
+**a+**
+<p align="center">
+	<img src="images/one_or_many.JPG">	
+</p>
 
 <br>
 
