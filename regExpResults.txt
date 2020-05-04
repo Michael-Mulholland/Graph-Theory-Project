@@ -15,3 +15,9 @@ Regex: a.b String: ab Match: True
 Regex: a String: a Match: True
 Regex: w String: w Match: True
 Regex: a.a String: a Match: False
+Regex: a.v String: av Match: True
+Regex: q String: q Match: True
+Regex: a.b String: ab Match: True
+Regex: ab String: ab Match: False
+Regex: a String: a Match: True
+Regex: a.b String: ab Match: True

@@ -249,36 +249,3 @@ def match(regex, s):
     # If nfa accept state is in the current set of  states, then we accept, 
     # otherwise we don't, returns TRUE or FAlSE
     return nfa.accept in current
-
-# TESTS
-# If you run the runner.py file, the below tests will not be executed.
-# If you run the regex.py file, the below tests will be excuted.
-# checks if the script has been run as a script by itself
-if __name__ == "__main__":
-
-    # Array of tests
-    # every test is true so the user will see no output
-    # uncomment the last test (which is false) and the user will see
-    # the following - AssertionError: b** should match baaa
-    tests = [
-        ["a.b|b*", "bbbbbb", True],
-        ["a.b|b*", "bbx", False],
-        ["a.b", "ab", True],
-        ["b*", "", True],
-    	["c?", "c", True],
-	["c?", "cc", False],
-    	["c?|a", "a", True],
-	["c?|a", "c", True],
-	["c?|b*", "bb", True],
-	["c?|b", "bbbbbb", False],
-	["c|b", "bbbbbb", False],
-        #["b**", "baaa", True],
-    ]
-
-    # loop through the tests
-    for test in tests:
-        # assert is used when debugging code
-        # The assert keyword lets you test if a condition in your code 
-        # returns True, if not, the program will raise an AssertionError
-        assert match(test[0], test[1]) == test[2], test[0] + (" should match " 
-            if test[2] else "should not match ") + test[1] 
