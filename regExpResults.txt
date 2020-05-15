@@ -21,3 +21,4 @@ Regex: a.b String: ab Match: True
 Regex: ab String: ab Match: False
 Regex: a String: a Match: True
 Regex: a.b String: ab Match: True
+Regex: a|b String: b Match: True
