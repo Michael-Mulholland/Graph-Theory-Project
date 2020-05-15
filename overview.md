@@ -244,6 +244,12 @@ Once the user hits enter, the match() function will return “True”, if the re
 	* python runner.py -v
 	* python runner.py -q
 	* python runner.py
+	
+<p>If the user enters python runner.py -h, they will see the following display.</p>
+
+<p align="center">
+	<img src="images/9.help.PNG"  width="550">	
+</p>
 
 * Which ever option the user selects, they will then be presented with three options and you have to select one.
 
@@ -259,11 +265,7 @@ Once the user hits enter, the match() function will return “True”, if the re
 </p>
 
 * Option 2
-<p>If the user enters python runner.py -h, they will see the following display.</p>
 
-<p align="center">
-	<img src="images/9.help.PNG"  width="550">	
-</p>
 
 <p>It displays a small description of the program and lists the optional arguments.</p>
 <p>If the user enters python runner.py -v and then selects option 2, they will see the following display.</p>
@@ -401,8 +403,6 @@ Description of the code within the shunt function.
 **Example: infix to postfix**
 
 * Infix: (a|b).(a*|b*)
-
-IMAGE
  
 * Postfix: ab|a*b*|.
  
@@ -495,13 +495,9 @@ If the character is a '+':
 
 <br>
 
-DIAGRAM FOR BOTH
-
 **Followes Function**
 
 It's a recursive function that adds a state to a set, and follows all of the e(psilon) arrows but only if we haven't already seen the state.
-
-IMAGE
 
 <br>
 
@@ -511,8 +507,6 @@ IMAGE
 * The followes function is then called and adds the first state and follows all e(psilon) arrows.
 * The for loop, loops through the string (s). If the label is equal to the character, then add the state arrow to the current set of states.
 * This function will return TRUE if the regular expression regex matches the string s, otherwise it returns FALSE.
-
-IMAGE
 
 <hr>
 
