@@ -280,8 +280,6 @@ Once the user hits enter, the match() function will return “True”, if the re
 
 * Option 2
 
-
-<p>It displays a small description of the program and lists the optional arguments.</p>
 <p>If the user enters python runner.py -v and then selects option 2, they will see the following display.</p>
 
 <p align="center">
