@@ -176,26 +176,36 @@ Once the user hits enter, the match() function will return “True”, if the re
 
 * Navigate to jetbrains.com
  
-IMAGE
+<p align="center">
+	<img src="images/1.jetbrains.PNG" width="450" height="300">	
+</p>
 
 * Click on “Find your IDE” under IntelliJ-based IDEs
  
-IMAGE
+<p align="center">
+	<img src="images/2.IDE.PNG" width="450" height="300">	
+</p>
 
 * Click on PyCharm
  
-IMAGE
+<p align="center">
+	<img src="images/3.pyCharm.PNG" width="250" height="300">	
+</p>
 
 * Click on Download, Community version.
  
-IMAGE
+<p align="center">
+	<img src="images/4.communityVersion.PNG" width="450" height="300">	
+</p>
 
 * Navigate to your downloads folder and double click on the pycharm-community-2020.1.exe file.
 * Follow the instructions and click Install Now.
 
 * PyCharm Community is now installed.
 
-IMAGE
+<p align="center">
+	<img src="images/5.pyCharmInstalled.PNG" width="450" height="300">	
+</p>
 
 <br>
   
@@ -206,11 +216,15 @@ IMAGE
 
 * Click on the green button “Clone or download”
  
-IMAGE
+<p align="center">
+	<img src="images/1.cloneButton.PNG">	
+</p>
 
 * Then click “Download ZIP”
  
-IMAGE
+<p align="center">
+	<img src="images/2.download.PNG">	
+</p>
 
 * Navigate to your downloads folder, right click on the ZIP folder and extract the ZIP folder to your preferred location.
 * Import the folder into your preferred IDE but I am going to explain how to do it with PyCharm.
@@ -219,39 +233,58 @@ IMAGE
 * Open up PyCharm
 * Click File => Open => Navigate to the location of the folder that you downloaded from GitHub and click OK.
 
-IMAGE
-
 * Click on the Terminal tab at the bottom left-hand side of the screen. 
  
-IMAGE
-
+<p align="center">
+	<img src="images/3.terminal.PNG">	
+</p>
 
 * As explained under the heading GitHub Repository Contents. The user has the following options when running the program.
 	* python runner.py -h
 	* python runner.py -v
 	* python runner.py -q
 	* python runner.py
+	
+<p>If the user enters python runner.py -h, they will see the following display.</p>
+
+<p align="center">
+	<img src="images/9.help.PNG"  width="550">	
+</p>
 
 * Which ever option the user selects, they will then be presented with three options and you have to select one.
 
-IMAGE
+<p align="center">
+	<img src="images/4.threeOptions.PNG">	
+</p>
 
 * Option 1
 	* If the user selects option 1, the user will prompt to enter a regular expression and a string. When the user hits the enter button, the result (true/false) will be displayed onto the screen.
  
-IMAGE
+<p align="center">
+	<img src="images/5.Option1.PNG">	
+</p>
 
 * Option 2
-	* If the user enters python runner.py -h, they will see the following display.
-IMAGE
-	* It displays a small description of the program and lists the optional arguments.
-	* If the user enters python runner.py -v and then selects option 2, they will see the following display.
-IMAGE
-	* If the user enters python runner.py -q and then selects option 2, they will see the following display.
-IMAGE
-	* If the user enters python runner.py and then selects option 2, they will see the following display. This runs five tests in the test_program.py file using the unittest framework.
+
+
+<p>It displays a small description of the program and lists the optional arguments.</p>
+<p>If the user enters python runner.py -v and then selects option 2, they will see the following display.</p>
+
+<p align="center">
+	<img src="images/7.Option2_Verbose.PNG"  width="450">	
+</p>
+
+<p>If the user enters python runner.py -q and then selects option 2, they will see the following display.</p>
+
+<p align="center">
+	<img src="images/8.Option2_Quite.PNG"  width="450">	
+</p>
+
+<p>If the user enters python runner.py and then selects option 2, they will see the following display. This runs five tests in the test_program.py file using the unittest framework. </p>
  
-IMAGE
+<p align="center">
+	<img src="images/6.Option2_NoArgs.PNG"  width="450">	
+</p>
 
 * Option 3
 	* If option three is selected, the program will exit.
@@ -292,8 +325,6 @@ Then do the following:
 * Navigate to the location of the project folder.
 * Type the following and the hit Enter.
 	* Python runner.py
-
-IMAGE
  
 From here, the tests are run exactly as they are under the Heading, Test=>VIM.
 
@@ -310,28 +341,36 @@ Using Coverage
 * Enter the following to run all unittest within the folder.
 * Coverage run -m unittest discover
  
-IMAGE
+<p align="center">
+	<img src="images/1.coverage_unittest.PNG">	
+</p>
  
 The above command will scan the folder and if it finds unittest, it’ll run them.
 
 Use the following to view a report on the results:
 * Coverage report -m
  
-IMAGE
+<p align="center">
+	<img src="images/2.coverage_report.PNG">	
+</p>
  
 This show that all my code has been test and nothing was missed.
 
 To view a nicer presentation, use the following:
 	* coverage html
  
-IMAGE
+<p align="center">
+	<img src="images/3.coverage_index.PNG">	
+</p>
  
 This will create a new folder in your project folder with the results but in a nice presentation.
 
 It will also create a regex.html and test_program.html file display the test coverage in each.
 
-IMAGE
-IMAGE
+<p align="center">
+	<img src="images/4.coverage_regex.PNG" width="400" height="500">
+	<img src="images/5.coverage_tests.PNG" width="400" height="500">	
+</p>
 
 <hr>
 
@@ -364,8 +403,6 @@ Description of the code within the shunt function.
 **Example: infix to postfix**
 
 * Infix: (a|b).(a*|b*)
-
-IMAGE
  
 * Postfix: ab|a*b*|.
  
@@ -458,13 +495,9 @@ If the character is a '+':
 
 <br>
 
-DIAGRAM FOR BOTH
-
 **Followes Function**
 
 It's a recursive function that adds a state to a set, and follows all of the e(psilon) arrows but only if we haven't already seen the state.
-
-IMAGE
 
 <br>
 
@@ -474,8 +507,6 @@ IMAGE
 * The followes function is then called and adds the first state and follows all e(psilon) arrows.
 * The for loop, loops through the string (s). If the label is equal to the character, then add the state arrow to the current set of states.
 * This function will return TRUE if the regular expression regex matches the string s, otherwise it returns FALSE.
-
-IMAGE
 
 <hr>
 
