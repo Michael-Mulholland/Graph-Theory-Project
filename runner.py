@@ -21,20 +21,57 @@ def main():
     # writing to a file
     f = open("regExpResults.txt", "a")
    
+    # command line argument -h 
+    # program description
     parser = argparse.ArgumentParser(
         description = "A program using the Python programming language that\
                 can build a non-deterministic finite automation (NFA) from\
                 a regular expression. This program will use the NFA to check\
-                if the regular expression matches any given string of text."        
+                if the regular expression matches any given string of text."
     )
 
+    # command line argument group.
+    # allows for us to specify options that conflict with each other.
     group = parser.add_mutually_exclusive_group()
+    
+    # command line argument -V or --version. Displays the python version
+    group.add_argument("-V", "--version", help="show program version", 
+            action="store_true")
+    
+    # command line argument -r or --run. 
+    # Brief description on how to run the program
+    group.add_argument("-r", "--run", help="how to run the program", 
+            action="store_true")
+    
+    # command line argument -v or --verbose. 
+    # Displays results of pre-written tests in more detail
     group.add_argument("-v", "--verbose", help="Option 2 only - Displays\
             results of pre-written tests in more detail", action="store_true")
-    group.add_argument("-q", "--quite", help="Option 2 only - Displays results\
-            of pre-written tests in less detail", action="store_true")
+    
+    # command line argument -q or --quite. 
+    # Displays results of pre-written tests in less detail
+    group.add_argument("-q", "--quite", help="Option 2 only - Displays\
+         results of pre-written tests in less detail", action="store_true")
 
+    # parse the args
     args = parser.parse_args()
+
+    print()
+    # displays python version
+    if args.version:
+        print("Python Version: 3.8.2")
+        print()
+        exit()
+    # Brief description on how to run the program
+    elif args.run:
+        print("How to run the program: Select one of the following options:")
+        print("\tOption 1: enter your own regular expression and String. " +
+                "If the regular expression regex matches the string, " +
+                "TRUE will be returned. If it does not match, FALSE will be returned.")
+        print("\tOption 2: runs a number pre-written tests.")
+        print("\tOption 3: is to quit the program.")
+        print()
+        exit()
 
     while True:
         # user to select one of three options
@@ -57,10 +94,17 @@ def main():
             s = input("Enter string: ")
             print()
 
-            # The match() function will return TRUE 
-            # if the regular expression regex matches the string.
-            # It returns FALSE otherwise
-            print("Regex: " + regex, " String: " + s, " Match: ", match(regex, s))
+            if args.verbose:
+                # The match() function will return TRUE 
+                # if the regular expression regex matches the string.
+                # It returns FALSE otherwise
+                print("The regular expression is: " + regex, 
+                    " the String is: " + s, " Match: ", match(regex, s))
+            elif args.quite:
+                print(regex, " " + s, " ", match(regex, s))
+            else: 
+                print("Regex: " + regex, " String: " + s, 
+                    " Match: ", match(regex, s))
 
             strRegex = "Regex: "
             inputRegex = regex
@@ -78,7 +122,8 @@ def main():
             f.write(strConcat)
            
         elif choice == '2':
-            # Print out of the tests and expected result - just so the user can see something
+            # Print out of the tests and expected result
+            # just so the user can see something
             
             # Array of regular expressions
             regex = ["b.c", "a.b|b*", "a|c.b*", "c*.b", "a+b", "a+b.c", "b?"]
@@ -92,7 +137,8 @@ def main():
                 for reg in regex:
                     print()
                     for s in stringsArr:
-                        print("The regular expression is: " + reg, " the String is: " + s, " Match: ", match(reg, s))
+                        print("The regular expression is: " + reg, 
+                            " the String is: " + s, " Match: ", match(reg, s))
 
             elif args.quite:
                 # Nested for loop to compare each index of the regex array with 
@@ -100,12 +146,14 @@ def main():
                 for reg in regex:
                     print()
                     for s in stringsArr:
-                        print("Regex: " + reg, " String: " + s, " Match: ", match(reg, s))
+                        print("Regex: " + reg, " String: " + s, 
+                            " Match: ", match(reg, s))
 
             else: 
                 print()
-                # the above tests will allow the user to see the tests and expected result
-                # the below test will only return OK if all tests pass or FAILED if one test fails
+                # The above tests will allow the user to see the tests and
+                # expected result. The below test will only return OK if all 
+                # tests pass or FAILED if one test fails
                 # The below runs unittest from the test_progam.py
                 # https://stackoverflow.com/questions/31559473/run-unittests-from-a-different-file
                 print("unittest from the test_program.py file")

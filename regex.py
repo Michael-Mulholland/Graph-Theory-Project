@@ -246,6 +246,6 @@ def match(regex, s):
     # return nfa.match(s)
 
     # Ask the NFA if it matches the string s
-    # If nfa accept state is in the current set of  states, then we accept, 
+    # If nfa accept state is in the current set of  states, then we accept,
     # otherwise we don't, returns TRUE or FAlSE
     return nfa.accept in current
