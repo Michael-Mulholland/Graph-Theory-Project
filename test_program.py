@@ -1,7 +1,6 @@
 import unittest
 from regex import match
 
-
 class Test_Program(unittest.TestCase):
        
     def test_zero_or_more(self):
@@ -35,7 +34,6 @@ class Test_Program(unittest.TestCase):
         for t in test:
             self.assertEqual(match(t[0], t[1]),t[2])
 
-
     def test_one_or_none(self):
         test = [
             # regex, string, expected result    
@@ -52,7 +50,6 @@ class Test_Program(unittest.TestCase):
         for t in test:
             self.assertEqual(match(t[0], t[1]),t[2])
 
-
     def test_and(self):
         test = [
             # regex, string, expected result    
@@ -65,7 +62,6 @@ class Test_Program(unittest.TestCase):
         
         for t in test:
             self.assertEqual(match(t[0], t[1]),t[2])
-
 
     def test_or(self):
         test = [
@@ -83,7 +79,6 @@ class Test_Program(unittest.TestCase):
         
         for t in test:
             self.assertEqual(match(t[0], t[1]),t[2])
-
 
     def test_all(self):
         test = [

@@ -4,3 +4,6 @@ Regex: a+ String: ab Match: False
 Regex: a? String:  Match: True
 Regex: a|b? String: bbbb Match: False
 Regex: a|b? String: b Match: True
+Regex: a|d String: d Match: True
+Regex: a.b String: ab Match: True
+Regex: a.b.c String: abd Match: False
