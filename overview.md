@@ -94,14 +94,18 @@ It contains 13 files but the main ones are:
 	* The argpase is a feature that provides useful information about the program and how to run it correctly. 
 	* In order to view these commands, the user must add on “-h” to the end of there command to execute the program.
 
-	* For example, if the file is called test.py. The user will type the following:
-		* Python3 test.py -h
+	* For example, the file is called runner.py. The user will type the following:
+		* Python3 runner.py -h
 
 	* This will provide useful information about the program and how to run it correctly. 
 
 	* I have implement the following:
 		* -h (--help)
-			* ovides useful information about the program and how to run it correctly. 
+			* provides useful information about the program and how to run it correctly.
+		* -V (--version)
+			* displays the python version
+		* -r (--run)
+			* brief description on how to run the program
 		* -v (--verbose)
 			* displays the regex, string and result but with more words than necessary
 			* only works for option 2
@@ -138,10 +142,6 @@ Once the user hits enter, the match() function will return “True”, if the re
 			* displays the regex, string and result but with less words 
 		* Python3 runner.py
 			* this option run all the tests in the test_program.py file using the unittest framework
-
-	* With the following options:
-		* Python3 runner.py -v
-		* Python3 runner.py -q
 
 	* I am using two arrays. One for the regular expressions and one for the strings. I've used a nested for loop to compare each index of the regex array with every index of the strings array to see if they match.
 
@@ -241,17 +241,31 @@ Once the user hits enter, the match() function will return “True”, if the re
 
 * As explained under the heading GitHub Repository Contents. The user has the following options when running the program.
 	* python runner.py -h
+	* python runner.py -V
+	* python runner.py -r
 	* python runner.py -v
 	* python runner.py -q
 	* python runner.py
 	
-<p>If the user enters python runner.py -h, they will see the following display.</p>
+<p>If the user enters python runner.py -h, they will see helpful information and then the program will exit.</p>
 
 <p align="center">
-	<img src="images/9.help.PNG"  width="550">	
+	<img src="images/100.help.PNG"  width="550">	
 </p>
 
-* Which ever option the user selects, they will then be presented with three options and you have to select one.
+<p>If the user enters python runner.py -V, they will see the python version and then the program will exit.</p>
+
+<p align="center">
+	<img src="images/100.version.PNG"  width="350">	
+</p>
+
+<p>If the user enters python runner.py -r, they will see details on how to run the program and then the program will exit.</p>
+
+<p align="center">
+	<img src="images/100.run_program.PNG"  width="900" height="100">	
+</p>
+
+* If the user selects -v, -q or no argument, they will then be presented with three options and you have to select one.
 
 <p align="center">
 	<img src="images/4.threeOptions.PNG">	
@@ -266,8 +280,6 @@ Once the user hits enter, the match() function will return “True”, if the re
 
 * Option 2
 
-
-<p>It displays a small description of the program and lists the optional arguments.</p>
 <p>If the user enters python runner.py -v and then selects option 2, they will see the following display.</p>
 
 <p align="center">
@@ -638,6 +650,3 @@ I was creating files that I didn't want to create and I don't know how I was cre
 * [The following help me explain what the folder __init__file is.](https://pythontips.com/2013/07/28/what-is-__init__-py/)
 
 ***
-
-<p>I have made 40 commits on this project. I just want to point out that around 12 of them are commits on updating the README. The reason I have 12 commits on the README is because I forgot about the preview button. So every change I made, i was commiting it. I'm just informing you in case you were thinking that I done it to get a higher number of commits.</p>
-
