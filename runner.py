@@ -45,13 +45,13 @@ def main():
     
     # command line argument -v or --verbose. 
     # Displays results of pre-written tests in more detail
-    group.add_argument("-v", "--verbose", help="Option 2 only - Displays\
-            results of pre-written tests in more detail", action="store_true")
+    group.add_argument("-v", "--verbose", help="Displays results of\
+         pre-written tests in more detail", action="store_true")
     
     # command line argument -q or --quite. 
     # Displays results of pre-written tests in less detail
-    group.add_argument("-q", "--quite", help="Option 2 only - Displays\
-         results of pre-written tests in less detail", action="store_true")
+    group.add_argument("-q", "--quite", help="Displays results of\
+         pre-written tests in less detail", action="store_true")
 
     # parse the args
     args = parser.parse_args()

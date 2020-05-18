@@ -7,3 +7,12 @@ Regex: a|b? String: b Match: True
 Regex: a|d String: d Match: True
 Regex: a.b String: ab Match: True
 Regex: a.b.c String: abd Match: False
+Regex: a String: a Match: True
+Regex: a.b String: ab Match: True
+Regex: a.b.c String: abc Match: True
+Regex: a.b.c String: abc Match: True
+Regex: a.b.c String: abc Match: True
+Regex: 3 String: w Match: False
+Regex: a|b String: a Match: True
+Regex: a.b String: af Match: False
+Regex: a.b String: ab Match: True
