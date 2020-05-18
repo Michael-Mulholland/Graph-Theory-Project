@@ -10,7 +10,9 @@ Michael Mulholland - G00362383
   
 <p>A regular expression is a string containing a series of characters, some of which may have a special meaning. <p>
 	
-<p>I have made more than 50 commits on this project. I just want to point out that around 20 of them are commits on updating the README. The reason I have around 20 commits on the README is because I forgot about the preview button. So every change I made, i was commiting it. I'm just informing you in case you were thinking that I done it to get a higher number of commits.</p>
+<p>I decided to do a screencast for my project. It is a brief run through of how the program works. I have named it GraphTheoryScreencast and it is in the repository.</p>
+	
+<p>I have made more than 60 commits on this project. I just want to point out that over 20 of them are commits on updating the README/overview. The reason I have over 20 commits is because I forgot about the preview button. So every change I made, i was commiting it. I'm just informing you in case you were thinking that I done it to get a higher number of commits.</p>
 
 <p>Also, please view the overview.md file in the repository. This file explains everything about the project.</p> 
 
